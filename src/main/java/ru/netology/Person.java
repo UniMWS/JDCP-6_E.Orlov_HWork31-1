@@ -8,18 +8,6 @@ public class Person {
     private int age;
     private String city;
 
-    //зачем это?
-//    public Person(String name, String surname) {
-//        this.name = name;
-//        this.surname = surname;
-//    }
-//
-//    public Person(String name, String surname, int age) {
-//        this.name = name;
-//        this.surname = surname;
-//        if (age >= 0) this.age = age;
-//    }
-
     protected Person(PersonBuilder personBuilder) {
         this.name = personBuilder.name;
         this.surname = personBuilder.surname;
@@ -28,8 +16,6 @@ public class Person {
     }
 
     public boolean hasAge() {
-//        return this.age > 0;
-//        return ((getAge().orElse(-1) > 0) ? true : false);
         return getAge().isPresent();
     }
 
@@ -58,9 +44,6 @@ public class Person {
     }
 
     public void happyBirthday() {
-//        if (getAge().isPresent()) {
-//            ++this.age;
-//        }
         this.age = getAge().getAsInt() + 1;
     }
 
@@ -68,12 +51,6 @@ public class Person {
     public String toString() {
         return name + ' ' + surname + ", (возраст " + getAge().getAsInt() +
                 ", город " + city + ')';
-    }
-
-    @Override
-    // а это зачем?
-    public int hashCode() { /*...*/
-        return 0;
     }
 
     public PersonBuilder newChildBuilder() {
